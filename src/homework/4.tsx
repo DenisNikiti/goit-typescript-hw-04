@@ -10,7 +10,7 @@ interface SelectedMenu {
 }
 interface MenuSelected extends SelectedMenu {}
 const MenuSelectedContext = createContext<MenuSelected>({
-  selectedMenu: {},
+  selectedMenu: { d: "first" },
 });
 
 // Додайте тип MenuAction

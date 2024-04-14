@@ -5,12 +5,28 @@ type State = {
   requestStep: string;
 };
 
+
+enum Steps  {
+  start = "start",
+  idle = "idle",
+  
+  pending = "pending",
+  finished = "finished"
+ }
+
+ type Action = 
+  | { type: 'START_REQUEST' }
+  | { type: 'PENDING_REQUEST' }
+  | { type: 'FINISH_REQUEST' }
+  | { type: 'RESET_REQUEST' }
+
+
 const initialState: State = {
   isRequestInProgress: false,
-  requestStep: "idle",
+  requestStep: Steps.idle
 };
 
-function requestReducer(state: State, action: PayloadAction): State {
+function requestReducer(state: State, action: Action): State {
   switch (action.type) {
     case "START_REQUEST":
       return { ...state, isRequestInProgress: true, requestStep: "start" };
